@@ -58,8 +58,8 @@ void CST816S::read_touch() {
   data.gestureID = data_raw[0];
   data.points = data_raw[1];
   data.event = data_raw[2] >> 6;
-  data.x = data_raw[3];
-  data.y = data_raw[5];
+  data.x = data_raw[3]|((data_raw[2]&0xf)<<8);
+  data.y = data_raw[5]|((data_raw[4]&0xf)<<8);
 }
 
 /*!
